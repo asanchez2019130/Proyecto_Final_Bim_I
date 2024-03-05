@@ -51,7 +51,7 @@ export const updateUser = async (req, res = response) => {
 export const deleteUser = async (req, res) => {
     const { id } = req.params;
 
-    const user = await User.findByIdAndUpdate(id, { estado: false });
+    const user = await User.findByIdAndUpdate(id, { state: false });
 
     const authenticatedUser = req.user;
 

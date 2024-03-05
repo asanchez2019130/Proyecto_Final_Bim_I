@@ -5,12 +5,14 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { dbConnection } from './mongo.js';
+import userRoutes from '../src/user/user.routes.js';
 
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.usuarioPath = '/gestionDeVentas/v1/users'
 
         this.middlewares();
         this.conectarDB();
@@ -29,7 +31,7 @@ class Server {
     }
 
     routes() {
-
+        this.app.use(this.usuarioPath, userRoutes);
     }
 
     listen() {
