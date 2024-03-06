@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
-
-
     firstName: {
         type: String,
         required: [true, "El nombre es obligotario"]

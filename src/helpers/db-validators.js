@@ -1,11 +1,12 @@
 
 import Role from '../role/role.model.js';
 import User from '../user/user.model.js';
+import Category from '../category/category.model.js';
 
 export const esRoleValido = async (role = '') => {
 
     if (!role) return true;
-    
+
     const existeRol = await Role.findOne({ role });
 
     if (!existeRol) {
@@ -25,6 +26,22 @@ export const existeUsuarioById = async (id = '') => {
     const existeUsuario = await User.findById(id);
 
     if (!existeUsuario) {
+        throw new Error(`El ID: ${id} No existe`);
+    }
+}
+
+export const existeCategory = async (nameCategory = '') => {
+    const existeCategory = await Category.findOne({ nameCategory });
+
+    if (existeCategory) {
+        throw new Error(`The category ${nameCategory} has already been registered`)
+    }
+}
+
+export const existeCategoryById = async (id = '') => {
+    const existeCategory = await Category.findById(id);
+
+    if (!existeCategory) {
         throw new Error(`El ID: ${id} No existe`);
     }
 }

@@ -17,10 +17,8 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
-// Ruta para obtener la lista de usuarios
 router.get("/", getUsers);
 
-// Ruta para crear un nuevo usuario
 router.post(
   "/",
   [
@@ -38,7 +36,6 @@ router.post(
   createUser
 );
 
-// Ruta para actualizar un usuario por su ID
 router.put(
   "/:id",
   [
@@ -50,7 +47,6 @@ router.put(
   updateUser
 );
 
-// Ruta para eliminar un usuario por su ID
 router.delete(
   "/:id",
   [
