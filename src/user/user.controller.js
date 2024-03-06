@@ -99,11 +99,55 @@ export const updateUser = async (req, res = response) => {
 }
 
 export const deleteUser = async (req, res) => {
+
+    const { id } = req.params;
+
+    const authenticatedUser = req.user;
+
+    try {
+
+        if (authenticatedUser.role === 'ADMIN') {
+            const user = await User.findByIdAndUpdate(id, { state: false });
+            return res.status(200).json({
+                msg: 'User eliminated',
+                user,
+                authenticatedUser
+            })
+        }
+
+
+        if (authenticatedUser.role === 'CLIENT') {
+            if (id !== authenticatedUser.id) {
+                return res.status(403).json({
+                    msg: 'You do not have permissions to delete other users profiles '
+                })
+            }
+
+            const user = await User.findByIdAndUpdate(id, { state: false });
+            return res.status(200).json({
+                msg: 'User deleted',
+                user,
+                authenticatedUser
+            })
+        }
+
+        return res.status(403).json({
+            msg: `You need Rol : ${role}`
+        })
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            msg: 'error occurred while deleting the user'
+        })
+    }
+
+    /*
     const { id } = req.params;
 
     const user = await User.findByIdAndUpdate(id, { state: false });
 
     const authenticatedUser = req.user;
 
-    res.status(200).json({ msg: 'Usuario desactivado', user, authenticatedUser });
+    res.status(200).json({ msg: 'Usuario desactivado', user, authenticatedUser });*/
 }
