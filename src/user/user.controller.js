@@ -141,7 +141,6 @@ export const deleteUser = async (req, res) => {
             msg: 'error occurred while deleting the user'
         })
     }
-
     /*
     const { id } = req.params;
 
