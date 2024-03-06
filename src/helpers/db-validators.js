@@ -1,16 +1,18 @@
 
-//import Role from '../role/role.model.js';
+import Role from '../role/role.model.js';
 import User from '../user/user.model.js';
-/*
+
 export const esRoleValido = async (role = '') => {
-    // Buscar el role en la base de datos
+
+    if (!role) return true;
+    
     const existeRol = await Role.findOne({ role });
 
     if (!existeRol) {
         throw new Error(`El role ${role} no existe en la base de datos`);
     }
 }
-*/
+
 export const existenteEmail = async (email = '') => {
     const existeEmail = await User.findOne({ email });
 
