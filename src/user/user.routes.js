@@ -54,7 +54,7 @@ router.put(
 router.delete(
   "/:id",
   [
-    //validarJWT,
+    validarJWT,
     tieneRole("ADMIN", "CLIENT"),
     check("id", "No es un ID válido").isMongoId(),
     check("id").custom(existeUsuarioById),
