@@ -30,10 +30,10 @@ router.get(
 router.post(
     "/",
     [
-        validarJWT,
-        tieneRole('ADMIN'),
+        //validarJWT,
+        //tieneRole('ADMIN'),
         check("nameProduct", "El nombre es obligatorio").not().isEmpty().custom(existeProduct),
-        check("description", "La descripción es obligatoria").not().isEmpty(),
+        check("descriptionProduct", "La descripción es obligatoria").not().isEmpty(),
         check("price", "El precio es obligatorio").not().isEmpty(),
         check("price", "El precio debe ser un número válido").isNumeric(),
         check("category", "La categoría es obligatoria").not().isEmpty(),
@@ -47,8 +47,8 @@ router.post(
 router.put(
     "/:id",
     [
-        validarJWT,
-        tieneRole('ADMIN'),
+        //validarJWT,
+        //tieneRole('ADMIN'),
         check('id', 'No es un Id válido').isMongoId(),
         validarCampos,
     ],
@@ -58,8 +58,8 @@ router.put(
 router.delete(
     "/:id",
     [
-        validarJWT,
-        tieneRole('ADMIN'),
+        //validarJWT,
+        //tieneRole('ADMIN'),
         check('id', 'No es un Id válido').isMongoId(),
         validarCampos,
     ],

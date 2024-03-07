@@ -48,7 +48,7 @@ export const existeCategoryById = async (id = '') => {
 }
 
 export const existeProduct = async (nameProduct = '') => {
-    const existeProduct = await Category.findOne({ nameProduct });
+    const existeProduct = await Product.findOne({ nameProduct });
 
     if (existeProduct) {
         throw new Error(`The category ${nameProduct} has already been registered`)

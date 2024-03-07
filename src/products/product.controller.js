@@ -10,6 +10,11 @@ export const getProducts = async (req = request, res = response) => {
         Product.find(query)
             .skip(Number(desde))
             .limit(Number(limite))
+            .populate({
+                path: 'category',
+                match: { state: true },
+                select: 'nameCategory'
+            })
     ]);
 
     res.status(200).json({
