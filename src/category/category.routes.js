@@ -19,7 +19,10 @@ router.get("/", getCategory);
 router.post(
     "/",
     [
+        validarJWT,
+        tieneRole('ADMIN'),
         check("nameCategory", "El nombre es obligatorio").not().isEmpty(),
+        check("nameCategory").custom(existeCategory),
         validarCampos,
     ],
     createCategory
@@ -28,6 +31,8 @@ router.post(
 router.put(
     "/:id",
     [
+        validarJWT,
+        tieneRole('ADMIN'),
         check('id', 'No es un Id valido').isMongoId(),
         check("id").custom(existeCategoryById),
         validarCampos,
@@ -38,8 +43,8 @@ router.put(
 router.delete(
     "/:id",
     [
-        // validarJWT,
-        // tieneRole('ADMIN', 'CLIENT'),
+        validarJWT,
+        tieneRole('ADMIN'),
         check('id', 'No es un Id valido').isMongoId(),
         check("id").custom(existeCategoryById),
         validarCampos,
