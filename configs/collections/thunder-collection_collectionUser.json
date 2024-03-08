@@ -1,53 +1,54 @@
 {
     "client": "Thunder Client",
     "collectionName": "collectionUser",
-    "dateExported": "2024-03-08T04:43:29.798Z",
+    "dateExported": "2024-03-08T17:48:27.489Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "07885a88-e7e8-411b-a9b2-8adbf8bf6d00",
-            "colId": "0690c23f-c172-4dc8-adf2-ee35d678b35c",
+            "_id": "a956d06e-70f1-4e72-9b6d-f8a97f2d8d31",
+            "colId": "4f5119b0-3b49-496d-8587-7497ab7dbf92",
             "containerId": "",
             "name": "createUser",
             "url": "http://localhost:3000/gestionDeVentas/v1/users",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2024-03-05T00:03:05.376Z",
-            "modified": "2024-03-05T23:40:21.896Z",
+            "created": "2024-03-08T14:05:45.126Z",
+            "modified": "2024-03-08T14:28:55.020Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"firstName\":\"4\",\n  \"lastName\":\"4\",\n  \"userName\":\"4\",\n  \"email\":\"4@kinal.edu.gt\",\n  \"password\":\"123456\"\n}",
+                "raw": "{\n  \"firstName\":\"Uriel\",\n  \"lastName\":\"Uriel\",\n  \"userName\":\"Uriel\",\n  \"email\":\"Uriel@kinal.edu.gt\",\n  \"password\":\"123456\"\n}",
                 "form": []
             },
+            "reqType": "post",
             "tests": []
         },
         {
-            "_id": "841a83bc-bd2c-441b-a6bf-98717dff71ec",
-            "colId": "0690c23f-c172-4dc8-adf2-ee35d678b35c",
+            "_id": "109a826d-b5ae-4aa4-a1d8-e8c9cdd3cf08",
+            "colId": "4f5119b0-3b49-496d-8587-7497ab7dbf92",
             "containerId": "",
             "name": "getUsers",
             "url": "http://localhost:3000/gestionDeVentas/v1/users",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2024-03-05T00:07:33.096Z",
-            "modified": "2024-03-05T00:07:37.116Z",
+            "created": "2024-03-08T14:05:45.127Z",
+            "modified": "2024-03-08T14:05:45.127Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "d85d2968-40e0-47fc-a24a-b3448a51bd4f",
-            "colId": "0690c23f-c172-4dc8-adf2-ee35d678b35c",
+            "_id": "a7fa4eb1-9f07-434f-b564-847457fdcd79",
+            "colId": "4f5119b0-3b49-496d-8587-7497ab7dbf92",
             "containerId": "",
             "name": "deleteUsers",
             "url": "http://localhost:3000/gestionDeVentas/v1/users/65e7a54d8a5235b47c46e253",
             "method": "DELETE",
             "sortNum": 50000,
-            "created": "2024-03-05T00:08:00.320Z",
-            "modified": "2024-03-06T01:18:58.021Z",
+            "created": "2024-03-08T14:05:45.128Z",
+            "modified": "2024-03-08T14:05:45.128Z",
             "headers": [
                 {
                     "name": "x-token",
@@ -58,15 +59,15 @@
             "tests": []
         },
         {
-            "_id": "7e9ad104-de12-4cc6-a6a0-eca712cbb374",
-            "colId": "0690c23f-c172-4dc8-adf2-ee35d678b35c",
+            "_id": "7adcf3ed-7720-46da-ace8-4205c2139f14",
+            "colId": "4f5119b0-3b49-496d-8587-7497ab7dbf92",
             "containerId": "",
             "name": "updateRole",
             "url": "http://localhost:3000/gestionDeVentas/v1/users/65e7ad6506b2b9a1e2ba26b3",
             "method": "PUT",
             "sortNum": 60000,
-            "created": "2024-03-05T00:08:19.736Z",
-            "modified": "2024-03-06T01:51:33.773Z",
+            "created": "2024-03-08T14:05:45.129Z",
+            "modified": "2024-03-08T14:05:45.129Z",
             "headers": [
                 {
                     "name": "x-token",
@@ -82,27 +83,28 @@
             "tests": []
         },
         {
-            "_id": "3a997d28-42d8-4389-86f4-1f9b55ab003d",
-            "colId": "0690c23f-c172-4dc8-adf2-ee35d678b35c",
+            "_id": "07eefe0a-e91b-4aa6-81d6-a32e9ed3eb0f",
+            "colId": "4f5119b0-3b49-496d-8587-7497ab7dbf92",
             "containerId": "",
-            "name": "updateUser",
-            "url": "http://localhost:3000/gestionDeVentas/v1/users/65e7a54d8a5235b47c46e253",
+            "name": "updateClient",
+            "url": "http://localhost:3000/gestionDeVentas/v1/users/65eb20a6a6df6763326699a4",
             "method": "PUT",
             "sortNum": 70000,
-            "created": "2024-03-05T23:24:28.840Z",
-            "modified": "2024-03-05T23:42:25.714Z",
+            "created": "2024-03-08T14:05:45.130Z",
+            "modified": "2024-03-08T15:13:50.188Z",
             "headers": [
                 {
                     "name": "x-token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU2NmUxMjFkZDZkNDBkNjVkYWM2ZDQiLCJpYXQiOjE3MDk2ODE5OTEsImV4cCI6MTcwOTY4NTU5MX0.rHHMLDYPKnYKLKEJ2MJefJe8UuvbdAxNtvtx1mBjvjw"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMWUxNTRhZmQxNjllYmZmZjY3YjkiLCJpYXQiOjE3MDk5MDc5MTIsImV4cCI6MTcwOTkxMTUxMn0.j3zrTkhJ55abt2o6OjbqGoq90sqJejiO6hUuAu4jNdU"
                 }
             ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"firstName\": \"6\",\n  \"lastName\": \"6\",\n  \"userName\": \"6\"\n}",
+                "raw": "{\n  \"firstName\": \"Client\",\n  \"lastName\": \"Client\",\n  \"userName\": \"Client\",\n  \"role\" : \"CLIENT\"\n}",
                 "form": []
             },
+            "reqType": "put",
             "tests": []
         }
     ]

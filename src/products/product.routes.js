@@ -6,7 +6,8 @@ import {
     getProducts,
     getProductById,
     getProductsOutOfStock,
-    updateProduct
+    updateProduct,
+    getProductsMostSold
 } from './product.controller.js';
 
 import { existeProduct, existeProductById, existeCategoryById } from '../helpers/db-validators.js';
@@ -18,7 +19,10 @@ const router = Router();
 
 router.get("/", getProducts);
 
-router.get("/ProductoOutOfStock", getProductsOutOfStock)
+router.get("/ProductoOutOfStock", getProductsOutOfStock);
+
+
+router.get("/ProductsMostSold", getProductsMostSold);
 
 router.get(
     "/:id",

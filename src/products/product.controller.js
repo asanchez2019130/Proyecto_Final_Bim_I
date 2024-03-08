@@ -3,7 +3,7 @@ import Product from './product.model.js';
 
 export const getProductsOutOfStock = async (req = request, res = response) => {
     const { limite, desde } = req.body;
-    const query = { stock: 0 };
+    const query = { stock: 0, state: true };
 
     const [total, products] = await Promise.all([
         Product.countDocuments(query),
@@ -22,6 +22,30 @@ export const getProductsOutOfStock = async (req = request, res = response) => {
         products
     })
 }
+
+export const getProductsMostSold = async (req = request, res = response) => {
+    try {
+        const { limite, desde } = req.body;
+
+        // Obtener los productos más vendidos ordenados por cantidad de ventas
+        const products = await Product.find({ state: true })
+            .sort({ sales: -1 })
+            .skip(Number(desde))
+            .limit(Number(limite));
+
+        res.status(200).json({
+            total: products.length,
+            products
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Error retrieving most sold products',
+            error: error.message
+        });
+    }
+}
+
 
 export const getProducts = async (req = request, res = response) => {
     const { limite, desde } = req.body;

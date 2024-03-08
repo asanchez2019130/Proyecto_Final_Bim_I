@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "collectionShopingCar",
+    "dateExported": "2024-03-08T17:47:40.634Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "cd3ac62a-dca0-4d87-88ad-fb2e6593b9d1",
+            "colId": "27b6493c-51b9-4b99-b068-57f2e7f551d0",
+            "containerId": "",
+            "name": "getShoppingCar",
+            "url": "http://localhost:3000/gestionDeVentas/v1/shoppingCar",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-08T17:17:17.182Z",
+            "modified": "2024-03-08T17:28:50.304Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5f9b1737-4fb2-4ffb-814c-e527d4ebeea1",
+            "colId": "27b6493c-51b9-4b99-b068-57f2e7f551d0",
+            "containerId": "",
+            "name": "addShoppingCar",
+            "url": "http://localhost:3000/gestionDeVentas/v1/shoppingCar",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-08T17:33:28.139Z",
+            "modified": "2024-03-08T17:37:25.121Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"65eb1d254afd169ebfff67b3\",\n  \"productId\": \"65eb224572ddadcf6edfc76b\",\n  \"quantity\":\"3\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

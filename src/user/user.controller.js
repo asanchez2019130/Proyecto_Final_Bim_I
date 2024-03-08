@@ -44,7 +44,7 @@ export const updateUser = async (req, res = response) => {
         if (authenticatedUser.role === 'ADMIN') {
             await User.findByIdAndUpdate(id, rest);
 
-            if (!["ADMIN", "CLIENT"].includes(role)) {
+            if (!['ADMIN', 'CLIENT'].includes(role)) {
                 return res.status(400).json({
                     msg: "Los unicos roles validos son ADMIN o CLIENT"
                 })
