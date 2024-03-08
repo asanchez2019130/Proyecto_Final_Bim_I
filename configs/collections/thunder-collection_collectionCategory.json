@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "collectionCategory",
-    "dateExported": "2024-03-07T06:08:00.483Z",
+    "dateExported": "2024-03-08T04:43:23.938Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -28,17 +28,17 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-03-06T04:40:54.969Z",
-            "modified": "2024-03-07T04:33:18.663Z",
+            "modified": "2024-03-08T03:54:23.143Z",
             "headers": [
                 {
                     "name": "x-token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU3YTUzZThhNTIzNWI0N2M0NmUyNTAiLCJpYXQiOjE3MDk3ODU5ODksImV4cCI6MTcwOTc4OTU4OX0.asACytKSdfM6djmV-K-lIUif5rf58RKG6GrqfJj4SI4"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU3YTUzZThhNTIzNWI0N2M0NmUyNTAiLCJpYXQiOjE3MDk4NzAwNTIsImV4cCI6MTcwOTg3MzY1Mn0.u7ywYfYkl5FDDj5qaV08E15hmbuFIoEE7wfZ04D0rI0"
                 }
             ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nameCategory\": \"Deporte\"\n}",
+                "raw": "{\n  \"nameCategory\": \"Carros\"\n}",
                 "form": []
             },
             "reqType": "post",
@@ -74,18 +74,23 @@
             "colId": "dfffa018-2729-485b-a789-8f7eebc0e445",
             "containerId": "",
             "name": "deleteCategory",
-            "url": "http://localhost:3000/gestionDeVentas/v1/category/65e9415a2052bb9472e73d80",
+            "url": "http://localhost:3000/gestionDeVentas/v1/category/65e9438e15725baef376d3e6",
             "method": "DELETE",
             "sortNum": 40000,
             "created": "2024-03-06T04:47:11.960Z",
-            "modified": "2024-03-07T04:25:18.804Z",
+            "modified": "2024-03-08T02:12:05.214Z",
             "headers": [
                 {
                     "name": "x-token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU2NmUxMjFkZDZkNDBkNjVkYWM2ZDQiLCJpYXQiOjE3MDk3ODU0OTksImV4cCI6MTcwOTc4OTA5OX0.zNzo1B14FUESKoelV2GewrTCe_AiBa4NCGwBEF-f5jQ"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU3YTUzZThhNTIzNWI0N2M0NmUyNTAiLCJpYXQiOjE3MDk4NjM5MTQsImV4cCI6MTcwOTg2NzUxNH0._mXbN-PHEzCpyXg1aGHRcnNJz5WDWOVOMHgUvT3WDMw"
                 }
             ],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"defaultCategoryId\": \"65ea564e99243e541356b6d3\"\n}",
+                "form": []
+            },
             "reqType": "del",
             "tests": []
         }
