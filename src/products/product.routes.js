@@ -5,10 +5,11 @@ import {
     deleteProduct,
     getProducts,
     getProductById,
+    getProductsOutOfStock,
     updateProduct
 } from './product.controller.js';
 
-import { existeProduct, existeProductById } from '../helpers/db-validators.js';
+import { existeProduct, existeProductById, existeCategoryById } from '../helpers/db-validators.js';
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
@@ -16,6 +17,8 @@ import { tieneRole } from "../middlewares/validar-roles.js";
 const router = Router();
 
 router.get("/", getProducts);
+
+router.get("/ProductoOutOfStock", getProductsOutOfStock)
 
 router.get(
     "/:id",
@@ -30,13 +33,13 @@ router.get(
 router.post(
     "/",
     [
-        //validarJWT,
-        //tieneRole('ADMIN'),
+        validarJWT,
+        tieneRole('ADMIN'),
         check("nameProduct", "El nombre es obligatorio").not().isEmpty().custom(existeProduct),
         check("descriptionProduct", "La descripción es obligatoria").not().isEmpty(),
         check("price", "El precio es obligatorio").not().isEmpty(),
         check("price", "El precio debe ser un número válido").isNumeric(),
-        check("category", "La categoría es obligatoria").not().isEmpty(),
+        check("category", "La categoría es obligatoria").not().isEmpty().custom(existeCategoryById),
         check("stock", "El stock es obligatorio").not().isEmpty(),
         check("stock", "El stock debe ser un número válido").isNumeric(),
         validarCampos,
@@ -47,8 +50,8 @@ router.post(
 router.put(
     "/:id",
     [
-        //validarJWT,
-        //tieneRole('ADMIN'),
+        validarJWT,
+        tieneRole('ADMIN'),
         check('id', 'No es un Id válido').isMongoId(),
         validarCampos,
     ],
@@ -58,8 +61,8 @@ router.put(
 router.delete(
     "/:id",
     [
-        //validarJWT,
-        //tieneRole('ADMIN'),
+        validarJWT,
+        tieneRole('ADMIN'),
         check('id', 'No es un Id válido').isMongoId(),
         validarCampos,
     ],

@@ -1,6 +1,28 @@
 import { response, request } from 'express';
 import Product from './product.model.js';
 
+export const getProductsOutOfStock = async (req = request, res = response) => {
+    const { limite, desde } = req.body;
+    const query = { stock: 0 };
+
+    const [total, products] = await Promise.all([
+        Product.countDocuments(query),
+        Product.find(query)
+            .skip(Number(desde))
+            .limit(Number(limite))
+            .populate({
+                path: 'category',
+                match: { state: true },
+                select: 'nameCategory'
+            })
+    ]);
+
+    res.status(200).json({
+        total,
+        products
+    })
+}
+
 export const getProducts = async (req = request, res = response) => {
     const { limite, desde } = req.body;
     const query = { state: true };

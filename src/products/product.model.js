@@ -23,6 +23,10 @@ const productShema = mongoose.Schema({
         default: 0,
         required: true
     },
+    sales: {
+        type: Number,
+        default: 0
+    },
     state: {
         type: Boolean,
         default: true
