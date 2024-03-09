@@ -5,8 +5,15 @@ import Product from '../products/product.model.js';
 export const createShoppingCart = async (req, res) => {
     try {
         const { userId, productId, quantity } = req.body;
+        const { userId: authenticatedUserId } = req.user;
 
-        // Verificar si el usuario y el producto existen
+/*
+        if (authenticatedUserId !== userId) {
+            return res.status(401).json({
+                message: 'Unauthorized access to create shopping cart for another user'
+            });
+        }*/
+
         const user = await User.findById(userId);
         const product = await Product.findById(productId);
 
@@ -16,34 +23,54 @@ export const createShoppingCart = async (req, res) => {
             });
         }
 
-        // Crear el carrito de compras
-        const shoppingCart = new ShoppingCart({
-            user: userId,
-            items: [{
+        if (product.stock < quantity) {
+            return res.status(400).json({
+                message: 'Insufficient stock for the product'
+            });
+        }
+
+        let shoppingCart = await ShoppingCart.findOne({ user: userId });
+
+        if (!shoppingCart) {
+            shoppingCart = new ShoppingCart({ user: userId, items: [] });
+        }
+
+        const existingItemIndex = shoppingCart.items.findIndex(item => item.product.toString() === productId);
+
+        if (existingItemIndex !== -1) {
+            shoppingCart.items[existingItemIndex].quantity += parseInt(quantity);
+        } else {
+            shoppingCart.items.push({
                 product: productId,
                 quantity,
                 price: product.price
-            }]
-        });
+            });
+        }
 
+        shoppingCart.totalPrice = shoppingCart.items.reduce((total, item) => {
+            return total + (item.price * item.quantity);
+        }, 0);
 
-        const totalPrice = product.price * quantity;
-        shoppingCart.totalPrice = totalPrice;
+        product.stock -= quantity;
 
-        await shoppingCart.save();
+        await Promise.all([
+            product.save(),
+            shoppingCart.save()
+        ]);
 
         res.status(201).json({
-            message: 'Shopping cart created successfully',
+            message: 'Product added to shopping cart successfully',
             shoppingCart
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'Error creating shopping cart',
+            message: 'Error adding product to shopping cart',
             error: error.message
         });
     }
 };
+
 
 export const getShoppingCart = async (req, res) => {
     try {

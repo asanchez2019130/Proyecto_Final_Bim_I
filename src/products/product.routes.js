@@ -7,7 +7,9 @@ import {
     getProductById,
     getProductsOutOfStock,
     updateProduct,
-    getProductsMostSold
+    getProductsMostSold,
+    getProductByName,
+    getProductsByCategory
 } from './product.controller.js';
 
 import { existeProduct, existeProductById, existeCategoryById } from '../helpers/db-validators.js';
@@ -19,8 +21,11 @@ const router = Router();
 
 router.get("/", getProducts);
 
+router.get("/ProductsByCategory/:categoryId", getProductsByCategory);
+
 router.get("/ProductoOutOfStock", getProductsOutOfStock);
 
+router.get("/ProductsByName", getProductByName);
 
 router.get("/ProductsMostSold", getProductsMostSold);
 

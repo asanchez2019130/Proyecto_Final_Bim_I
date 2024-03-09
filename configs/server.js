@@ -10,6 +10,7 @@ import authRoutes from '../src/auth/auth.routes.js';
 import categoryRoutes from '../src/category/category.routes.js';
 import productRoutes from '../src/products/product.routes.js';
 import shoppingCarRoutes from '../src/shoppingCart/shopping.routes.js';
+import buyShoppingCarRotues from '../src/buyCar/buyCar.routes.js'
 
 class Server {
     constructor() {
@@ -20,6 +21,7 @@ class Server {
         this.categoryPath = '/gestionDeVentas/v1/category'
         this.productPath = '/gestionDeVentas/v1/product'
         this.shoppingCarPath = '/gestionDeVentas/v1/shoppingCar'
+        this.buyShoppingCarPath = '/gestionDeVentas/v1/buyShoppingCar'
 
         this.middlewares();
         this.conectarDB();
@@ -43,6 +45,7 @@ class Server {
         this.app.use(this.categoryPath, categoryRoutes);
         this.app.use(this.productPath, productRoutes);
         this.app.use(this.shoppingCarPath, shoppingCarRoutes);
+        this.app.use(this.buyShoppingCarPath, buyShoppingCarRotues);
     }
 
     listen() {

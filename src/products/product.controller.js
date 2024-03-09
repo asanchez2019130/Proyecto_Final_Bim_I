@@ -1,6 +1,50 @@
 import { response, request } from 'express';
 import Product from './product.model.js';
 
+export const getProductsByCategory = async (req, res) => {
+    try {
+        const { categoryId } = req.params;
+
+        const products = await Product.find({ category: categoryId })
+            .populate({
+                path: 'category',
+                match: { state: true },
+                select: 'nameCategory'
+            });
+
+        res.status(200).json({
+            message: 'Products found successfully',
+            products
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'Error fetching products by category',
+            error: error.message
+        });
+    }
+};
+
+export const getProductByName = async (req, res) => {
+    const { nameProduct } = req.query;
+    const query = { state: true, nameProduct: { $regex: new RegExp(nameProduct, 'i') } };
+
+    try {
+        const [total, product] = await Promise.all([
+            Product.countDocuments(query),
+            Product.find(query)
+        ]);
+
+
+        res.status(200).json({
+            total,
+            product
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al obtener productos por nombre' });
+    }
+};
 export const getProductsOutOfStock = async (req = request, res = response) => {
     const { limite, desde } = req.body;
     const query = { stock: 0, state: true };
@@ -45,7 +89,6 @@ export const getProductsMostSold = async (req = request, res = response) => {
         });
     }
 }
-
 
 export const getProducts = async (req = request, res = response) => {
     const { limite, desde } = req.body;

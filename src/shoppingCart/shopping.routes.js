@@ -12,7 +12,7 @@ router.get('/:userId',
 
 
 router.post('/',
-    //validarJWT,
+    validarJWT,
     createShoppingCart);
 
 
