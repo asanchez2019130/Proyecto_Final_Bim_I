@@ -1,8 +1,8 @@
-import Buy from './buyCar.model.js';
+import Buy from '../buyCar/buyCar.model.js';
 import User from '../user/user.model.js';
 import ShoppingCart from '../shoppingCart/shoppingCart.model.js';
 import Product from '../products/product.model.js';
-import Invoice from '../invoice/invoice.model.js'
+import Invoice from '../invoice/invoice.model.js';
 
 export const createBuy = async (req, res) => {
     const { userId, shoppingCartId, total } = req.body;
@@ -77,3 +77,24 @@ export const createBuy = async (req, res) => {
     }
 };
 
+
+
+export const getInvoices = async (req, res) => {
+    try {
+        const invoices = await Invoice.find()
+            .populate({
+                path: 'user',
+                match: { state: true },
+                select: 'userName'
+            })
+            .populate({
+                path: 'items.product',
+                select: 'nameProduct'
+            })
+
+        res.status(200).json({ invoices });
+    } catch (error) {
+        console.error('Error al obtener las facturas:', error);
+        res.status(500).json({ message: 'Error al obtener las facturas', error: error.message });
+    }
+};
